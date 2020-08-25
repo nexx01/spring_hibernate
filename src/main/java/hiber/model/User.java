@@ -1,5 +1,8 @@
 package hiber.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +21,9 @@ public class User {
 
    @Column(name = "email")
    private String email;
+
+   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+   private Car car;
 
    public User() {}
    
@@ -58,4 +64,13 @@ public class User {
    public void setEmail(String email) {
       this.email = email;
    }
+
+
+/*   public void setCar(Car car) {
+      this.car = car;
+   }
+
+   public Car getCar() {
+      return car;
+   }*/
 }
