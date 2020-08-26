@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-
+@Component
 @Entity
 @Table(name = "cars")
 public class Car {
@@ -20,13 +20,20 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "car")
     private User user;
 
-    public Car() {}
+    public Car() {
+    }
 
-    public Long getId() { return id;}
+    public Car(String name, int series) {
+        this.name = name;
+        this.series = series;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
@@ -36,9 +43,9 @@ public class Car {
         return series;
     }
 
-/*    public User getUser() {
+    public User getUser() {
         return user;
-    }*/
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -53,10 +60,9 @@ public class Car {
     }
 
 
-
-/*    public void setUser(User user) {
+    public void setUser(User user) {
         this.user = user;
-    }*/
+    }
 
 
 }
