@@ -1,6 +1,5 @@
 package hiber.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -20,15 +19,19 @@ public class Car {
     @Column(name = "series")
     private int series;
 
+    @Column(name = "number")
+    private int number;
+
     @OneToOne(mappedBy = "car")
     private User user;
 
     public Car() {
     }
 
-    public Car(String name, int series) {
+    public Car(String name, int series, int number) {
         this.name = name;
         this.series = series;
+        this.number = number;
     }
 
     public Long getId() {
@@ -55,14 +58,11 @@ public class Car {
         this.name = name;
     }
 
-    public void setSeries(int series) {
-        this.series = series;
+    public int getNumber() {
+        return number;
     }
 
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setNumber(int number) {
+        this.number = number;
     }
-
-
 }
