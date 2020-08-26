@@ -20,13 +20,9 @@ public class MainApp {
         User user3 = new User("User3", "Lastname3", "user3@mail.ru");
         User user4 = new User("User4", "Lastname4", "user4@mail.ru");
 
-        Car car1 = new Car("Car1", 52, 3334);
-        Car car2 = new Car("Car2", 66, 1234);
-        Car car3 = new Car("Car3", 14, 4321);
-
-        user1.setCar(car1);
-        user2.setCar(car2);
-        user3.setCar(car3);
+        user1.setCar(new Car("Car1", 52, 3334));
+        user2.setCar(new Car("Car2", 66, 1234));
+        user3.setCar(new Car("Car3", 14, 4321));
 
         userService.add(user1);
         userService.add(user2);
@@ -53,8 +49,7 @@ public class MainApp {
     }
 
     public static void getOwnerCar(int series, int number, UserService userService) {
-        System.out.printf("\n\n\n");
-
+        System.out.printf("\n");
         User userOwner = userService.getOwnerCar(series, number);
         if (userOwner != null) {
             System.out.println("Владелец машины: Серия " + userOwner.getCar().getSeries()
